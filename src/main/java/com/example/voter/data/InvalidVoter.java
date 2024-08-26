@@ -7,22 +7,22 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "valid_voters")
-public class Voter {
+@Table(name = "invalid_voters")
+public class InvalidVoter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vvid;
+    private int ivid;
     private String name;
     private int age;
 
     // Getters and Setters
-    public int getVvid() {
-        return vvid;
+    public int getIvid() {
+        return ivid;
     }
 
-    public void setVvid(int vvid) {
-        this.vvid = vvid;
+    public void setIvid(int ivid) {
+        this.ivid = ivid;
     }
 
     public String getName() {
