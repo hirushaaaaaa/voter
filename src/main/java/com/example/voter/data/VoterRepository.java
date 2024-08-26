@@ -13,14 +13,14 @@ public interface VoterRepository extends JpaRepository<Voter, Integer> {
     List<Voter> findAll();
 
     // Retrieve a voter by their ID
-    Optional<Voter> findByVvid(Integer vvid);
+    Optional<Voter> findById(Integer vvid);
 
     // Save a new or updated voter
     Voter save(Voter voter);
 
     // Delete a voter by their ID
-    void deleteByVvid(Integer vvid);
+    void deleteById(Integer vvid);
 
     // Check if a voter exists by their ID
-    boolean existsByVvid(Integer vvid);
+    boolean existsById(Integer vvid);
 }
