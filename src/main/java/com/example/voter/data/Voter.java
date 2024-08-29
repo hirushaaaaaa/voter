@@ -1,8 +1,6 @@
 package com.example.voter.data;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,17 +9,16 @@ import jakarta.persistence.Table;
 public class Voter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vvid;
+    private String vvid;
     private String name;
     private int age;
 
     // Getters and Setters
-    public int getVvid() {
+    public String getVvid() {
         return vvid;
     }
 
-    public void setVvid(int vvid) {
+    public void setVvid(String vvid) {
         this.vvid = vvid;
     }
 

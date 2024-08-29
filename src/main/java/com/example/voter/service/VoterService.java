@@ -22,7 +22,7 @@ public class VoterService {
         return voterRepository.findAll();
     }
 
-    public Voter getValidVoterByVvid(int vvid) {
+    public Voter getValidVoterByVvid(String vvid) {
         return voterRepository.findById(vvid).orElse(null);
     }
 
@@ -30,25 +30,23 @@ public class VoterService {
         return voterRepository.save(voter);
     }
 
-    public void deleteValidVoter(int VVID) {
-        voterRepository.deleteById(VVID);
+    public void deleteValidVoter(String vvid) {
+        voterRepository.deleteById(vvid);
     }
 
     public List<InvalidVoter> getAllInvalidVoters() {
         return invalidVoterRepository.findAll();
     }
 
-    public InvalidVoter getInvalidVoterByIvid(int IVID) {
-        return invalidVoterRepository.findById(IVID).orElse(null);
+    public InvalidVoter getInvalidVoterByIvid(String ivid) {
+        return invalidVoterRepository.findById(ivid).orElse(null);
     }
 
     public InvalidVoter addInvalidVoter(InvalidVoter invalidVoter) {
         return invalidVoterRepository.save(invalidVoter);
     }
 
-    public void deleteInvalidVoter(int IVID) {
-        invalidVoterRepository.deleteById(IVID);
+    public void deleteInvalidVoter(String ivid) {
+        invalidVoterRepository.deleteById(ivid);
     }
-
-
 }

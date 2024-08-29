@@ -7,20 +7,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface InvalidVoterRepository extends JpaRepository<InvalidVoter, Integer> {
+public interface InvalidVoterRepository extends JpaRepository<InvalidVoter, String> {
 
     // Retrieve all invalid voters
     List<InvalidVoter> findAll();
 
     // Retrieve an invalid voter by their ID
-    Optional<InvalidVoter> findById(Integer ivid);
+    Optional<InvalidVoter> findById(String ivid);
 
     // Save a new or updated invalid voter
     InvalidVoter save(InvalidVoter invalidVoter);
 
     // Delete an invalid voter by their ID
-    void deleteById(Integer ivid);
+    void deleteById(String ivid);
 
     // Check if an invalid voter exists by their ID
-    boolean existsById(Integer ivid);
+    boolean existsById(String ivid);
 }

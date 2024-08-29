@@ -22,7 +22,7 @@ public class VoterController {
     }
 
     @GetMapping("/valid/{vvid}")
-    public ResponseEntity<Voter> getValidVoterByVvid(@PathVariable int vvid) {
+    public ResponseEntity<Voter> getValidVoterByVvid(@PathVariable String vvid) {
         Voter voter = voterService.getValidVoterByVvid(vvid);
         if (voter != null) {
             return ResponseEntity.ok(voter);
@@ -37,7 +37,7 @@ public class VoterController {
     }
 
     @DeleteMapping("/valid/{vvid}")
-    public void deleteValidVoter(@PathVariable int vvid) {
+    public void deleteValidVoter(@PathVariable String vvid) {
         voterService.deleteValidVoter(vvid);
     }
 
@@ -47,7 +47,7 @@ public class VoterController {
     }
 
     @GetMapping("/invalid/{ivid}")
-    public ResponseEntity<InvalidVoter> getInvalidVoterByIvid(@PathVariable int ivid) {
+    public ResponseEntity<InvalidVoter> getInvalidVoterByIvid(@PathVariable String ivid) {
         InvalidVoter invalidVoter = voterService.getInvalidVoterByIvid(ivid);
         if (invalidVoter != null) {
             return ResponseEntity.ok(invalidVoter);
@@ -62,7 +62,7 @@ public class VoterController {
     }
 
     @DeleteMapping("/invalid/{ivid}")
-    public void deleteInvalidVoter(@PathVariable int ivid) {
+    public void deleteInvalidVoter(@PathVariable String ivid) {
         voterService.deleteInvalidVoter(ivid);
     }
 }
