@@ -1,6 +1,5 @@
 package com.example.voter.controller;
 
-import com.example.voter.data.InvalidVoter;
 import com.example.voter.data.Voter;
 import com.example.voter.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,12 @@ public class VoterController {
     @Autowired
     private VoterService voterService;
 
-    @GetMapping("/valid")
+    @GetMapping()
     public List<Voter> getAllValidVoters() {
         return voterService.getAllValidVoters();
     }
 
-    @GetMapping("/valid/{vvid}")
+    @GetMapping("/{vvid}")
     public ResponseEntity<Voter> getValidVoterByVvid(@PathVariable String vvid) {
         Voter voter = voterService.getValidVoterByVvid(vvid);
         if (voter != null) {
@@ -31,38 +30,14 @@ public class VoterController {
         }
     }
 
-    @PostMapping("/valid")
+    @PostMapping()
     public Voter addValidVoter(@RequestBody Voter voter) {
         return voterService.addValidVoter(voter);
     }
 
-    @DeleteMapping("/valid/{vvid}")
+    @DeleteMapping("/{vvid}")
     public void deleteValidVoter(@PathVariable String vvid) {
         voterService.deleteValidVoter(vvid);
     }
 
-    @GetMapping("/invalid")
-    public List<InvalidVoter> getAllInvalidVoters() {
-        return voterService.getAllInvalidVoters();
-    }
-
-    @GetMapping("/invalid/{ivid}")
-    public ResponseEntity<InvalidVoter> getInvalidVoterByIvid(@PathVariable String ivid) {
-        InvalidVoter invalidVoter = voterService.getInvalidVoterByIvid(ivid);
-        if (invalidVoter != null) {
-            return ResponseEntity.ok(invalidVoter);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/invalid")
-    public InvalidVoter addInvalidVoter(@RequestBody InvalidVoter invalidVoter) {
-        return voterService.addInvalidVoter(invalidVoter);
-    }
-
-    @DeleteMapping("/invalid/{ivid}")
-    public void deleteInvalidVoter(@PathVariable String ivid) {
-        voterService.deleteInvalidVoter(ivid);
-    }
 }
