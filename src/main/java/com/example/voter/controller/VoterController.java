@@ -1,12 +1,14 @@
 package com.example.voter.controller;
 
 import com.example.voter.data.Voter;
+import com.example.voter.data.VoterRepository;
 import com.example.voter.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -16,6 +18,8 @@ public class VoterController {
 
     @Autowired
     private VoterService voterService;
+    @Autowired
+    private VoterRepository voterRepository;
 
     @GetMapping()
     public List<Voter> getAllVoters() {
@@ -34,9 +38,15 @@ public class VoterController {
     }
 
     @PostMapping
-    public Voter addVoter(@RequestBody Voter voter) {
-        return voterService.addVoter(voter);
+    public ResponseEntity<?> addVoter(@RequestBody Voter voter) {
+        if (voterRepository.existsById(voter.getVid())) {
+            return ResponseEntity.ok(Collections.singletonMap("exists", true));
+        } else {
+            voterRepository.save(voter);
+            return ResponseEntity.ok(Collections.singletonMap("exists", false));
+        }
     }
+
 
 
 
