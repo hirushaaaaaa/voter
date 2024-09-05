@@ -14,20 +14,22 @@ public class VoterService {
     private VoterRepository voterRepository;
 
 
-    public List<Voter> getAllValidVoters() {
+    public List<Voter> getAllVoters() {
+
         return voterRepository.findAll();
     }
 
-    public Voter getValidVoterByVvid(String vvid) {
-        return voterRepository.findById(vvid).orElse(null);
+    public Voter getVoterByVid(String vid) {
+        return voterRepository.findById(vid).orElse(null);
     }
 
-    public Voter addValidVoter(Voter voter) {
+    public Voter addVoter(Voter voter) {
+
         return voterRepository.save(voter);
     }
 
-    public void deleteValidVoter(String vvid) {
-        voterRepository.deleteById(vvid);
+    public void deleteVoter(String vid) {
+        voterRepository.deleteById(vid);
     }
 
 

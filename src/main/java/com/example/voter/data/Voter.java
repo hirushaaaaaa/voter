@@ -1,25 +1,25 @@
 package com.example.voter.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "valid_voters")
+@Table(name = "voter")
 public class Voter {
 
     @Id
-    private String vvid;
+    @Column (name = "vid")
+    private String vid;
+    @Column(name="name")
     private String name;
+    @Column(name ="age")
     private int age;
 
-    // Getters and Setters
-    public String getVvid() {
-        return vvid;
+    public String getVid() {
+        return vid;
     }
 
-    public void setVvid(String vvid) {
-        this.vvid = vvid;
+    public void setVid(String vid) {
+        this.vid = vid;
     }
 
     public String getName() {
@@ -37,4 +37,9 @@ public class Voter {
     public void setAge(int age) {
         this.age = age;
     }
+
+
+
+    // Getters and Setters
+
 }

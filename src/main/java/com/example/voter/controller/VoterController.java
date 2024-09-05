@@ -3,12 +3,14 @@ package com.example.voter.controller;
 import com.example.voter.data.Voter;
 import com.example.voter.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/voters")
 public class VoterController {
 
@@ -16,13 +18,14 @@ public class VoterController {
     private VoterService voterService;
 
     @GetMapping()
-    public List<Voter> getAllValidVoters() {
-        return voterService.getAllValidVoters();
+    public List<Voter> getAllVoters() {
+
+        return voterService.getAllVoters();
     }
 
-    @GetMapping("/{vvid}")
-    public ResponseEntity<Voter> getValidVoterByVvid(@PathVariable String vvid) {
-        Voter voter = voterService.getValidVoterByVvid(vvid);
+    @GetMapping("/{vid}")
+    public ResponseEntity<Voter> getVoterByVid(@PathVariable String vid) {
+        Voter voter = voterService.getVoterByVid(vid);
         if (voter != null) {
             return ResponseEntity.ok(voter);
         } else {
@@ -30,14 +33,16 @@ public class VoterController {
         }
     }
 
-    @PostMapping()
-    public Voter addValidVoter(@RequestBody Voter voter) {
-        return voterService.addValidVoter(voter);
+    @PostMapping
+    public Voter addVoter(@RequestBody Voter voter) {
+        return voterService.addVoter(voter);
     }
 
-    @DeleteMapping("/{vvid}")
-    public void deleteValidVoter(@PathVariable String vvid) {
-        voterService.deleteValidVoter(vvid);
+
+
+    @DeleteMapping("/{vid}")
+    public void deleteVoter(@PathVariable String vid) {
+        voterService.deleteVoter(vid);
     }
 
 }
