@@ -13,7 +13,6 @@ public class VoterService {
     @Autowired
     private VoterRepository voterRepository;
 
-
     public List<Voter> getAllVoters() {
 
         return voterRepository.findAll();

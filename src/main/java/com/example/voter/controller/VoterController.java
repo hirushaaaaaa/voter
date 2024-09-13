@@ -4,6 +4,7 @@ import com.example.voter.data.Voter;
 import com.example.voter.data.VoterRepository;
 import com.example.voter.service.VoterService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,9 +47,6 @@ public class VoterController {
             return ResponseEntity.ok(Collections.singletonMap("exists", false));
         }
     }
-
-
-
 
     @DeleteMapping("/{vid}")
     public void deleteVoter(@PathVariable String vid) {

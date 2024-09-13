@@ -40,6 +40,4 @@ public class Voter {
 
 
 
-    // Getters and Setters
-
 }
